@@ -8,25 +8,40 @@
 
 # 程序源代码：
 
+"""
 I = int(raw_input("Please input your profit > "))
 branch_mark = [0, 100000, 200000, 400000, 600000, 1000000]
-bonus_rate = [0, 0.1, 0.075, 0.05, 0.03, 0.015, 0.01]
+bonus_rate = [0.1, 0.075, 0.05, 0.03, 0.015, 0.01]
 bonus = []
 
+for i in range(1,6):
+
+    while (branch_mark[i-1] < I < branch_mark[i]) or (I >= branch_mark[i] >= 1000000):
+
+        bonus.append((I - branch_mark[i-1]) * bonus_rate[i-1])
+
+        while i>2:
+            bonus.append((branch_mark[i-1] - branch_mark[i-2]) * bonus_rate[i-2])
+            i = i-1
+
+        break
+
+print bonus
+print sum(bonus)
+"""
+
+# better codes
+
+I = int(raw_input("Please input your profit > "))
+branch_mark = [1000000, 600000, 400000, 200000, 100000, 0]
+bonus_rate = [0.01, 0.015, 0.03, 0.05, 0.075, 0.1]
+bonus = []
 
 for i in range(0,6):
-    if I > branch_mark[i] and I < branch_mark[i+1]:
-        bonus.append((I - branch_mark[i]) * bonus_rate[i+1])
+    while I > branch_mark[i]:
+        bonus.append((I - branch_mark[i]) * bonus_rate[i])
+        I = branch_mark[i] #利用 for 迭代的顺序，我觉得这个赋值很巧妙
 
-        while i>0:
-            i = i-1
-            bonus.append(branch_mark[i] * bonus_rate[i])
-
-    elif I > branch_mark[i] > :
-        while i>0:
-            i = i-1
-            bonus.append(branch_mark[i] * bonus_rate[i])
-    break
 
 print bonus
 print sum(bonus)
