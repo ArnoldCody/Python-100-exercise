@@ -2,7 +2,7 @@
 # 题目：将一个正整数分解质因数。例如：输入90,打印出90=2*3*3*5。
 
 # import sys
-def Prime_num(i):
+def Prime_num(i): # 先验证是否为素数
     prime = False
     n = 2
     while i%n != 0 and n<i:
@@ -12,11 +12,11 @@ def Prime_num(i):
             break
     return prime
 
-def factor_analysis(i):
+def factor_analysis(i): # 进行因式分解
     factor = []
-    if Prime_num(i):
+    if Prime_num(i): # 如是素数，直接排除
         print "%d is a Prime Number, there is no factors" % i
-    else:
+    else: # 因式分解代码
         n=2
         print "%d =" % i, # 用，在同一行打印
         while n<i:
