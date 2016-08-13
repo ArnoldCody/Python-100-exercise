@@ -13,10 +13,10 @@ def Prime_num(i): # 先验证是否为素数
     return prime
 
 def factor_analysis(i): # 进行因式分解
-    factor = []
     if Prime_num(i): # 如是素数，直接排除
         print "%d is a Prime Number, there is no factors" % i
     else: # 因式分解代码
+        factor = []
         n=2
         print "%d =" % i, # 用，在同一行打印
         while n<i:
