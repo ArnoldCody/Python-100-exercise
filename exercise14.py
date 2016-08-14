@@ -28,11 +28,29 @@ def factor_analysis(i): # 进行因式分解
                 n = 2
 
             else:
-                n+=1
-
+                n += 1
         for n in factor:
             print "%d *" % n, # 用，在同一行打印
+        factor.append(i)
         print i
+        return factor
 
+def perfect_numbe_analysis(i): # 检验是否为完数，如是，返回 True，不是返回 False
+    if Prime_num(i): # 如是素数，直接排除
+        return False
+    else: # 因式分解代码
+        factor = []
+        n=1
+        while n<i:
+            if i%n == 0:
+                factor.append(n)
+                n += 1
+            else:
+                n += 1
 
-factor_analysis(231312)
+        if sum(factor) == i:
+            return True
+        else:
+            return False
+
+perfect_numbe_analysis(28)
